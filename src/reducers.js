@@ -1,7 +1,6 @@
 // 用于合并多个 reducer 并返回
 
 import {combineReducers} from 'redux';
-import {counter} from './redux/index.redux';
-import {auth} from './redux/auth.redux';
+import {user} from "./redux/user.redux";
 
-export default combineReducers(counter, auth);
+export default combineReducers({user});

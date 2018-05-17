@@ -14,8 +14,9 @@ import {
 // import './index.css';
 import reducer from './reducers';
 import registerServiceWorker from './registerServiceWorker';
-import Login from './container/login/login';
-import Register from './container/register/register';
+import Login from './pages/login/login';
+import Register from './pages/register/register';
+import AuthRoute from './component/auth_route/auth_route'
 
 
 // 建立store
@@ -23,14 +24,22 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(reducer, /* preloadedState, */ composeEnhancers(
     applyMiddleware(thunk)
 ));
-// login
+
+
+function Boss() {
+    return <h2>BOSS页面</h2>
+}
 
 ReactDOM.render(
     <Provider store={store}>
         <Router>
             <div>
-                <Route path='/login' component={Login}>登陆页</Route>
-                <Route path='/register' component={Register}>注册页</Route>
+                <AuthRoute></AuthRoute>
+                <Switch>
+                    <Route path="/boss" component={Boss}></Route>
+                    <Route path='/login' component={Login}>登陆页</Route>
+                    <Route path='/register' component={Register}>注册页</Route>
+                </Switch>
             </div>
         </Router>
     </Provider>,
