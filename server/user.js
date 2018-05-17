@@ -20,9 +20,9 @@ Router.post('/register', function (req, res) {
     console.log("收到注册请求");
     console.log(req.body);
     const {user, pwd, type} = req.body;
-    User.findOne({user:user}, function (err, doc) {
-        if (doc) {
-            return res.json({code:1, msg:'用户已存在'});
+    User.findOne({user:user}, function (err, doc) {     // 用 findOne 查找用户是否已经存在
+        if (doc) {                                          // 用户存在，那么doc就不为空
+            return res.json({code:1, msg:'用户已存在'});     // 注意每次一定要先设置登录状态
         }
         User.create({user,pwd, type}, function (err, doc) {
             if (err) {
