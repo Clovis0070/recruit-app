@@ -3,6 +3,7 @@ const userRouter = require('./user');   // 引入 user.js
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 
+
 const app = express();  // 创建 app
 app.use(cookieParser());    // 添加处理 cookie 的能力
 app.use(bodyParser.json());     // 添加处理 request body 的能力

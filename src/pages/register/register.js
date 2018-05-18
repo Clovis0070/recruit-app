@@ -10,7 +10,7 @@ import {
     // Flex,
 } from 'antd-mobile';
 import {connect} from 'react-redux';
-
+import {Redirect} from 'react-router-dom'
 import {register} from "../../redux/user.redux";
 
 require('./register.css');
@@ -49,6 +49,7 @@ class Register extends Component {
     render() {
         return (
             <div className="register-container">
+                { this.props.redirectTo ? <Redirect to={this.props.redirectTo}></Redirect> : null }
                 <Logo/>
                 {this.props.msg ? <p className="error-msg">{this.props.msg}</p> : null}
                 <WingBlank>
@@ -71,7 +72,6 @@ class Register extends Component {
                     {/*<Button onClick={this.register} type="primary">注册</Button>*/}
                 </WingBlank>
             </div>
-
         );
     }
 }

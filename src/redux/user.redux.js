@@ -1,10 +1,12 @@
 import axios from 'axios';
+import {getRedirectPath} from "../util";
 
 const REGISTER_SUCCESS = 'REGISTER_SUCCESS';
 const ERROR_MSG = 'ERROR_MSG';
 
 const initState = {
     isAuth: false,
+    redirectTo: '',     // 注册登陆成功后跳转的位置
     msg: '',
     user: '',
     pwd: '',
@@ -15,9 +17,17 @@ const initState = {
 export function user(state = initState, action) {
     switch (action.type) {
         case REGISTER_SUCCESS:
-            return {...state, msg: '', isAuth: true, ...action.payload}
+            return {
+                ...state,
+                msg: '',
+                isAuth: true,
+                ...action.payload,
+                redirectTo: getRedirectPath(action.payload)
+            }
         case ERROR_MSG:
-            return {...state, msg: action.msg, isAuth: false}
+            return {
+                ...state, msg: action.msg, isAuth: false
+            }
         default:
             return state;
     }

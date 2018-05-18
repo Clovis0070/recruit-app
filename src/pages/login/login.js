@@ -15,8 +15,14 @@ class Login extends Component{
         this.register = this.register.bind(this);         // 在组件的 constructor 里定义 this. 有一个性能优化的功效，如果不把方法放到 constructor里，那么每次 Button click 时是传入一个新的方法对象，放到constructor里则每次调用的是组件里定义好的对象
     }
 
+    handleChange = (key, val) => {
+        this.setState({
+            [key]: val              // 要注意这里的语法： 尤其是 [key] 这里方括号的使用
+        })
+    }
+
     register() {
-        this.props.history.push('/register');       // 把 register 放到 history，使得可以回退到注册页。
+        this.props.history.push('/register');       // 跳转到注册页。
     }
 
     render() {

@@ -1,6 +1,7 @@
 const express = require('express');
 const Router = express.Router();
 
+const utility = require('utility');     // 引入加密模块
 const model = require('./model');   // 引入 model 及其方法
 const User = model.getModel('user');
 
@@ -24,7 +25,7 @@ Router.post('/register', function (req, res) {
         if (doc) {                                          // 用户存在，那么doc就不为空
             return res.json({code:1, msg:'用户已存在'});     // 注意每次一定要先设置登录状态
         }
-        User.create({user,pwd, type}, function (err, doc) {
+        User.create({user,pwd: md5Pwd(pwd), type}, function (err, doc) {
             if (err) {
                 return res.json({code:1, msg: '后端出错了'});
             }
@@ -32,5 +33,10 @@ Router.post('/register', function (req, res) {
         })
     })
 })
+
+function md5Pwd(pwd){                // 这是本服务器使用的加密算法
+    const salt = 'imooc_is_great_3461223ixf@-0_2#$%^&iclock_9rs';
+    return utility.md5(utility.md5(salt + pwd));
+}
 
 module.exports = Router;
