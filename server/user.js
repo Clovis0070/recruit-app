@@ -34,6 +34,19 @@ Router.post('/register', function (req, res) {
     })
 })
 
+Router.post('/login', function (req, res) {
+    console.log("收到登陆请求");
+    console.log(req.body);
+    const {user, pwd} = req.body;
+    User.findOne({user: user}, function (err, doc) {
+        if (doc) {
+            // 等会添加用户密码验证，现在先直接通过
+            return res.json({code: 0})
+        }
+        return res.json({code: 1, msg:"此用户不存在，请检查输入"})
+    })
+})
+
 function md5Pwd(pwd){                // 这是本服务器使用的加密算法
     const salt = 'imooc_is_great_3461223ixf@-0_2#$%^&iclock_9rs';
     return utility.md5(utility.md5(salt + pwd));

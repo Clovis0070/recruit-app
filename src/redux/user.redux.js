@@ -1,7 +1,8 @@
 import axios from 'axios';
 import {getRedirectPath} from "../util";
 
-const REGISTER_SUCCESS = 'REGISTER_SUCCESS';
+const REGISTER_SUCCESS = 'REGISTER_SUCCESS',
+    LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 const ERROR_MSG = 'ERROR_MSG';
 
 const initState = {
@@ -21,6 +22,12 @@ export function user(state = initState, action) {
                 ...state,
                 msg: '',
                 isAuth: true,
+                ...action.payload,
+                redirectTo: getRedirectPath(action.payload)
+            }
+        case LOGIN_SUCCESS:
+            return {
+                ...state,
                 ...action.payload,
                 redirectTo: getRedirectPath(action.payload)
             }
@@ -62,4 +69,26 @@ export function register({user, pwd, repeatpwd, type}) {
                 }
             });
     }
+}
+
+function loginSuccess(data) {
+    return {type: LOGIN_SUCCESS, payload: data}
+}
+
+export function login({user, pwd}) {
+    if(!user || !pwd) {
+        return errorMsg("用户名和密码必须输入");
+    }
+
+    return dispatch => {
+        axios.post('/user/login', {user, pwd})
+            .then(res => {
+                if (res.status === 200 && res.data.code === 0) {
+                    dispatch(loginSuccess({type: 'genius'}));
+                } else {
+                    dispatch(errorMsg(res.data.msg));
+                }
+            })
+    }
+
 }

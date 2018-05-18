@@ -36,7 +36,7 @@ ReactDOM.render(
             <div>
                 <AuthRoute></AuthRoute>
                 <Switch>
-                    <Route path="/boss" component={Boss}></Route>
+                    {/*<Route path="/boss" component={Boss}></Route>*/}
                     <Route path='/login' component={Login}>登陆页</Route>
                     <Route path='/register' component={Register}>注册页</Route>
                 </Switch>
