@@ -16,7 +16,8 @@ import reducer from './reducers';
 import registerServiceWorker from './registerServiceWorker';
 import Login from './pages/login/login';
 import Register from './pages/register/register';
-import AuthRoute from './component/auth_route/auth_route'
+import AuthRoute from './component/authRoute/authRoute'
+import BossInfo from './pages/bossInfo/bossInfo';
 
 
 // 建立store
@@ -26,9 +27,6 @@ const store = createStore(reducer, /* preloadedState, */ composeEnhancers(
 ));
 
 
-function Boss() {
-    return <h2>BOSS页面</h2>
-}
 
 ReactDOM.render(
     <Provider store={store}>
@@ -36,7 +34,7 @@ ReactDOM.render(
             <div>
                 <AuthRoute></AuthRoute>
                 <Switch>
-                    {/*<Route path="/boss" component={Boss}></Route>*/}
+                    <Route path='/bossinfo' component={BossInfo}></Route>
                     <Route path='/login' component={Login}>登陆页</Route>
                     <Route path='/register' component={Register}>注册页</Route>
                 </Switch>
