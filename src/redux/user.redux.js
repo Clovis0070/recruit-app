@@ -7,7 +7,7 @@ const REGISTER_SUCCESS = 'REGISTER_SUCCESS',
 const ERROR_MSG = 'ERROR_MSG';
 
 const initState = {
-    isAuth: false,
+    // isAuth: false,
     redirectTo: '',     // 注册登陆成功后跳转的位置
     msg: '',
     user: '',
@@ -22,7 +22,7 @@ export function user(state = initState, action) {
             return {
                 ...state,
                 msg: '',
-                isAuth: true,
+                // isAuth: true,
                 ...action.payload,
                 redirectTo: getRedirectPath(action.payload)
             }
@@ -36,7 +36,9 @@ export function user(state = initState, action) {
             return {...state, ...action.payload}
         case ERROR_MSG:
             return {
-                ...state, msg: action.msg, isAuth: false
+                ...state,
+                msg: action.msg
+                // isAuth: false
             }
         default:
             return state;

@@ -17,8 +17,8 @@ class AuthRoute extends Component {
     // 4. 判断用户是否已经完善信息
 
     componentDidMount() {
-        const publicList = ['/login', '/register'];     // 当前路由是否在 login register，如果是，则不用去做跳转，也不用下面用户状态查询了
         const pathname = this.props.location.pathname;  // 获取当前路由，它放在 this.props.location.pathnam
+        const publicList = ['/login', '/register'];     // 当前路由是否在 login register，如果是，则不用去做跳转，也不用下面用户状态查询了
         if (publicList.indexOf(pathname) !== -1) {
             return null
         }
