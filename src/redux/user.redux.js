@@ -2,7 +2,8 @@ import axios from 'axios';
 import {getRedirectPath} from "../util";
 
 const REGISTER_SUCCESS = 'REGISTER_SUCCESS',
-    LOGIN_SUCCESS = 'LOGIN_SUCCESS';
+    LOGIN_SUCCESS = 'LOGIN_SUCCESS',
+    LOAD_DATA = 'LOAD_DATA';
 const ERROR_MSG = 'ERROR_MSG';
 
 const initState = {
@@ -31,6 +32,8 @@ export function user(state = initState, action) {
                 ...action.payload,
                 redirectTo: getRedirectPath(action.payload)
             }
+        case LOAD_DATA:         // 用于获取已登录用户的信息
+            return {...state, ...action.payload}
         case ERROR_MSG:
             return {
                 ...state, msg: action.msg, isAuth: false
@@ -84,11 +87,15 @@ export function login({user, pwd}) {
         axios.post('/user/login', {user, pwd})
             .then(res => {
                 if (res.status === 200 && res.data.code === 0) {
-                    dispatch(loginSuccess({type: 'genius'}));
+                    // console.log(res.data.userdata);
+                    dispatch(loginSuccess({type: res.data.usertype}));
                 } else {
                     dispatch(errorMsg(res.data.msg));
                 }
             })
     }
+}
 
+export function loadData(userinfo) {
+    return {type:LOAD_DATA, payload: userinfo}
 }
