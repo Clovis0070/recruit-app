@@ -17,15 +17,14 @@ import {saveInfo} from "../../redux/user.redux";
     state => state.user,
     {saveInfo}
 )
-class BossInfo extends Component{
+class GeniusInfo extends Component{
     constructor(props) {
         super(props);
 
         this.state = {
             title: '',
-            company: '',
             salary: '',
-            requirement: ''
+            desc: ''
         }
     }
 
@@ -58,15 +57,14 @@ class BossInfo extends Component{
                     ]}
                 >Boss 完善信息页</NavBar>
                 <AvataSelector selectAvatar={this.selectAvatar}></AvataSelector>
-                <InputItem onChange={ v => this.onChange('title', v)}>招聘职位</InputItem>
-                <InputItem onChange={ v => this.onChange('company', v)}>公司名称</InputItem>
-                <InputItem onChange={ v => this.onChange('salary', v)}>职位薪资</InputItem>
+                <InputItem onChange={ v => this.onChange('title', v)}>求职意向</InputItem>
+                <InputItem onChange={ v => this.onChange('salary', v)}>期望薪资</InputItem>
                 <TextareaItem
-                    onChange={ v => this.onChange('requirement', v)}
+                    onChange={ v => this.onChange('desc', v)}
                     row={3}
                     autoHeight
-                    title='职位要求'
-                >职位要求</TextareaItem>
+                    title='个人简介'
+                >个人简介</TextareaItem>
                 <WhiteSpace></WhiteSpace>
                 <Button type='primary' onClick={this.props.saveInfo(this.state)}>保存</Button>
             </div>
@@ -74,4 +72,4 @@ class BossInfo extends Component{
     }
 }
 
-export default BossInfo;
+export default GeniusInfo;

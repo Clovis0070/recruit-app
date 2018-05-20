@@ -18,6 +18,7 @@ import Login from './pages/login/login';
 import Register from './pages/register/register';
 import AuthRoute from './component/authRoute/authRoute'
 import BossInfo from './pages/bossInfo/bossInfo';
+import GeniusInfo from './pages/geniusInfo/geniusInfo';
 
 
 // 建立store
@@ -34,6 +35,7 @@ ReactDOM.render(
             <div>
                 <AuthRoute></AuthRoute>
                 <Switch>
+                    <Route path='/geniusinfo' component={GeniusInfo}></Route>
                     <Route path='/bossinfo' component={BossInfo}></Route>
                     <Route path='/login' component={Login}>登陆页</Route>
                     <Route path='/register' component={Register}>注册页</Route>
