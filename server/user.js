@@ -28,16 +28,6 @@ Router.get('/info', function (req, res) {       // 查询用户登陆状态，�
     });
 });
 
-Router.get('/infotest', function (req, res) {
-    User.findOne({user: 'a'}, function (err, doc) {
-        console.log('test');
-        if (err) {
-            console.log(err);
-        } else {
-            console.log('查询成功');
-        }
-    })
-});
 
 Router.get('/list', function (req, res) {
     console.log("收到list查询请求");
@@ -58,6 +48,8 @@ Router.post('/register', function (req, res) {
             if (error) {
                 return res.json({code: 1, msg: '后端出错了'});
             }
+            console.log(docu);
+            res.cookie('userid', docu._id);
             return res.json({code: 0});
         })
     })
@@ -90,6 +82,7 @@ Router.post('/saveinfo', function (req, res) {
     }
     const body = req.body;
     User.findByIdAndUpdate(userid, body, function (err, doc) {
+        console.log(doc);
         const data = Object.assign({}, {        // 对象合并，合并 body 和传入的数据
             user: doc.user,
             type: doc.type
