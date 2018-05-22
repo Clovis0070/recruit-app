@@ -66,7 +66,7 @@ class GeniusInfo extends Component{
                     title='个人简介'
                 >个人简介</TextareaItem>
                 <WhiteSpace></WhiteSpace>
-                <Button type='primary' onClick={this.props.saveInfo(this.state)}>保存</Button>
+                <Button type='primary' onClick={() => {this.props.saveInfo(this.state)}}>保存</Button>
             </div>
         );
     }

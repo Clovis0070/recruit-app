@@ -76,17 +76,20 @@ Router.post('/login', function (req, res) {
 })
 
 Router.post('/saveinfo', function (req, res) {
+    console.log('保存用户个人信息');
     const userid = req.cookies.userid;
     if (!userid) {
         return json.dumps({code: 1})
     }
     const body = req.body;
-    User.findByIdAndUpdate(userid, body, function (err, doc) {
+    User.findByIdAndUpdate(userid, body ,function (err, doc) {
         console.log(doc);
+        console.log();
         const data = Object.assign({}, {        // 对象合并，合并 body 和传入的数据
             user: doc.user,
             type: doc.type
         }, body)
+        console.log(data);
 
         return res.json({code: 0, data});
     })
