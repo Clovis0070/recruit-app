@@ -16,9 +16,10 @@ const models = {
         'avatar': {type: String}, // 头像
         'brief': {type: String},  // 个人简介
         'title': {type: String},  // 寻求的职位
+        'salary': {type: String}, // 职位的薪资
         // 如果是boss，还会有下面字段
         'company': {type: String},
-        'money': {type: String},
+        'requirement': {type: String},
     },
     chat: {}
 }
