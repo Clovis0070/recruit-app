@@ -55,7 +55,7 @@ class GeniusInfo extends Component{
                         <Icon key="0" type="search" style={{ marginRight: '16px' }} />,
                         <Icon key="1" type="ellipsis" />,
                     ]}
-                >Boss 完善信息页</NavBar>
+                >用户完善信息页</NavBar>
                 <AvataSelector selectAvatar={this.selectAvatar}></AvataSelector>
                 <InputItem onChange={ v => this.onChange('title', v)}>求职意向</InputItem>
                 <InputItem onChange={ v => this.onChange('salary', v)}>期望薪资</InputItem>

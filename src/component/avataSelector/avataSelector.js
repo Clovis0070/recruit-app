@@ -3,9 +3,14 @@ import {
     Grid,
     List
 } from 'antd-mobile'
+import PropTypes from 'prop-types';    // 类型检测组件
 
 // 头像选择
 class AvataSelector extends Component {
+    static propTypes = {
+        selectAvatar: PropTypes.func        // 规定 selectAvatar 的传入参数必须为function，否则报warnning
+    }
+
     constructor(props) {
         super(props);
 

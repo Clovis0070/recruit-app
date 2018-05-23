@@ -56,7 +56,7 @@ class BossInfo extends Component{
                         <Icon key="0" type="search" style={{ marginRight: '16px' }} />,
                         <Icon key="1" type="ellipsis" />,
                     ]}
-                >Boss 完善信息页</NavBar>
+                >Boss完善信息页</NavBar>
                 <AvataSelector selectAvatar={this.selectAvatar}></AvataSelector>
                 <InputItem onChange={ v => this.onChange('title', v)}>招聘职位</InputItem>
                 <InputItem onChange={ v => this.onChange('company', v)}>公司名称</InputItem>
