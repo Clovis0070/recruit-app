@@ -12,16 +12,12 @@ import NavLinkBar from '../../component/navlink/navlink'
 import {saveInfo} from "../../redux/user.redux";
 import Boss from '../boss/boss';
 import Genius from '../genius/genius';
+import User from '../user/user';
 
 
 function Msg() {
     return <h2>消息列表</h2>
 }
-
-function User() {
-    return <h2>个人中心</h2>
-}
-
 
 @connect(
     state => state,
@@ -74,9 +70,8 @@ class Dashboard extends Component {
         const navHeader = navList.find(v => v.path === pathname);
         return (
             <div>
-                <h2>dashboard header</h2>
                 <NavBar mode='dark' className="fixed-header">{navHeader && navHeader.title}</NavBar>
-                    <div>
+                    <div className='functional-body'>
                         <Switch>
                             {navList.map(v=>(
                                 <Route key={v.path} path={v.path} component={v.component}></Route>

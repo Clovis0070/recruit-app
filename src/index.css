@@ -20,6 +20,10 @@
     z-index: 10;
 }
 
+.functional-body {
+    margin-top: 45px;
+}
+
 .am-card-body hr {
     margin-right: 50%;
     align-self: flex-start;
