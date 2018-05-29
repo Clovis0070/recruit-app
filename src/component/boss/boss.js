@@ -5,10 +5,16 @@ import {
     WingBlank
 } from 'antd-mobile';
 import axios from 'axios';
+import {connect} from 'react-redux';
 
+import {getUserList} from '../../redux/chatuser.redux';
 
 
 // Boss 的操作主页内容Route，展示正在求职的大牛列表
+@connect(
+    state => state.chatuser,
+    {getUserList}
+)
 class Boss extends Component {
     constructor(props) {
         super(props);
@@ -20,23 +26,16 @@ class Boss extends Component {
 
 
     componentWillMount() {
-        console.log('boss will mount');
-        axios.get('/user/list?type=genius')
-            .then(res => {
-                if (res.data.code === 0) {
-                    this.setState({data: res.data.data})
-                }
-            })
+        this.props.getUserList('genius');
     }
 
     render() {
         console.log('boss mount');
         const Header = Card.Header,
             Body = Card.Body;
-        console.log(this.state.data);
         return (
             <WingBlank className="list-content">
-                {this.state.data.map(v => (
+                {this.props.userlist.map(v => (
                     v.avatar
                         ? (<div key={v._id}>
                             <Card>
