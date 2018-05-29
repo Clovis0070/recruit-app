@@ -11,7 +11,7 @@ import {
     Switch
 } from 'react-router-dom';
 
-// import './index.css';
+import './index.css';
 import reducer from './reducers';
 import registerServiceWorker from './registerServiceWorker';
 import Login from './pages/login/login';
@@ -19,6 +19,7 @@ import Register from './pages/register/register';
 import AuthRoute from './component/authRoute/authRoute'
 import BossInfo from './pages/bossInfo/bossInfo';
 import GeniusInfo from './pages/geniusInfo/geniusInfo';
+import Dashboard from './component/dashboard/dashboard';
 
 
 // 建立store
@@ -26,7 +27,6 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(reducer, /* preloadedState, */ composeEnhancers(
     applyMiddleware(thunk)
 ));
-
 
 
 ReactDOM.render(
@@ -38,12 +38,15 @@ ReactDOM.render(
                     <Route path='/geniusinfo' component={GeniusInfo}></Route>
                     <Route path='/bossinfo' component={BossInfo}></Route>
                     <Route path='/login' component={Login}>登陆页</Route>
+                    {/*<Route path='/' exact component={Login}>登陆页</Route>*/}
                     <Route path='/register' component={Register}>注册页</Route>
+                    <Route component={Dashboard}></Route>                           // 登陆成功之后进入dashboard，有dashboard管理接下来的跳转。
                 </Switch>
             </div>
         </Router>
-    </Provider>,
-    document.getElementById('root')
+    </Provider>
+,
+document.getElementById('root')
 );
 
 registerServiceWorker();

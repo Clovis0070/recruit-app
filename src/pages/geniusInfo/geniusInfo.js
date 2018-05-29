@@ -60,7 +60,7 @@ class GeniusInfo extends Component{
                 <InputItem onChange={ v => this.onChange('title', v)}>求职意向</InputItem>
                 <InputItem onChange={ v => this.onChange('salary', v)}>期望薪资</InputItem>
                 <TextareaItem
-                    onChange={ v => this.onChange('desc', v)}
+                    onChange={ v => this.onChange('brief', v)}
                     rows={3}
                     autoHeight
                     title='个人简介'

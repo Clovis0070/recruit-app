@@ -28,7 +28,7 @@ class AvataSelector extends Component {
             }));
 
         const gridHeader = this.state.icon
-            ? (<div>
+            ? (<div style={{marginTop:40}}>
                 <span>已选择头像</span>
                 <img src={this.state.icon} style={{width: 20}} alt="头像"/>
                </div>)

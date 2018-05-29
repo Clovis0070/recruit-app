@@ -31,8 +31,11 @@ Router.get('/info', function (req, res) {       // 查询用户登陆状态，�
 
 Router.get('/list', function (req, res) {
     console.log("收到list查询请求");
-    User.find({}, function (err, doc) {
-        return res.json(doc);
+    const {type} = req.query;
+    console.log(type);
+    User.find({type}, _filter, function (err, doc) {
+        // console.log(doc);
+        return res.json({code:0, data: doc});
     })
 })
 
@@ -63,8 +66,10 @@ Router.post('/login', function (req, res) {
         if (doc) {
             // console.log(doc);
             if (md5Pwd(pwd) === doc.pwd) {
-                res.cookie('userid', doc._id);      // 把登陆信息放到 cookie 中，根据数据库自动添加的 _id 俩索引这个数据是最好的做法。
-                return res.json({code: 0, usertype: doc.type});
+                res.cookie('userid', doc._id);      // 向客户端发送cookie，把登陆信息放到 cookie 中，根据数据库自动添加的 _id 俩索引这个数据是最好的做法。
+                delete doc.pwd;
+                delete doc._v;
+                return res.json({code: 0, data: doc});
             }
             else {
                 return res.json({code: 1, msg: "密码不正确，请检查密码，重新输入"});
