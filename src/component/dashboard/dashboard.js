@@ -11,11 +11,8 @@ import {
 import NavLinkBar from '../../component/navlink/navlink'
 import {saveInfo} from "../../redux/user.redux";
 import Boss from '../boss/boss';
+import Genius from '../genius/genius';
 
-
-function Genius() {
-    return <h2>大牛首页</h2>
-}
 
 function Msg() {
     return <h2>消息列表</h2>

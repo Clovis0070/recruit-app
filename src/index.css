@@ -20,6 +20,10 @@
     z-index: 10;
 }
 
+.am-card-body hr {
+    margin-right: 50%;
+    align-self: flex-start;
+}
 
 .page-content{
     padding:45px 5px;
