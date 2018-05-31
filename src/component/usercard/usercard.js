@@ -28,7 +28,7 @@ class Usercard extends Component {
                                 <Body>
                                     {v.type === 'boss' ? <div><span>公司</span> ：{v.company}</div> : null}
                                     {v.type === 'boss' ? <hr/> : null}
-                                    <div>{v.type === 'boss' ? '职位要求：' : '个人简介：'}</div>
+                                    <div>{v.type === 'boss' ? '职位要求：' : null}</div>
                                     {
                                         (v.type === 'boss' ? v.requirement : v.brief).split('\n').map(v => (
                                             <div key={v}>{v}</div>
