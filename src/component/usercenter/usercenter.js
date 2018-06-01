@@ -11,7 +11,7 @@ import {
 @connect(
     state => state.user
 )
-class User extends Component {
+class UserCenter extends Component {
     constructor(props) {
         super(props);
         // this.logout = this.logout.bind(this)
@@ -29,8 +29,10 @@ class User extends Component {
         let renderHeader = this.props.type == 'boss' ? '招聘需求' : '个人简介';
         let desc = this.props.type == 'boss' ? this.props.requirement : this.props.brief;
         return this.props.user ? (
-                <div>
-                    <button style={{width:50, height:50}} onClick={this.logout}></button>
+                <div onClick={function () {
+                    console.log('this is nonsense');
+                }}>
+                    <div className='stt' style={{width :50, height:50}}>aaaa</div>
                     <Result
                         img={<img style={{width:50}} src={require(`../img/${this.props.avatar}.png`)}/>}
                         title={this.props.user}
@@ -45,7 +47,7 @@ class User extends Component {
                     </List>
                     <WhiteSpace></WhiteSpace>
                     {/*<WhiteSpace></WhiteSpace>*/}
-                    <List onClick={this.logout}>
+                    <List id="logout">
                         <Item>退出登录</Item>
                     </List>
                 </div>
@@ -54,4 +56,4 @@ class User extends Component {
     }
 }
 
-export default User;
+export default UserCenter;

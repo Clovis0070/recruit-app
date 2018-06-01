@@ -12,7 +12,7 @@ import NavLinkBar from '../../component/navlink/navlink'
 import {saveInfo} from "../../redux/user.redux";
 import Boss from '../boss/boss';
 import Genius from '../genius/genius';
-import User from '../usercenter/user';
+import UserCenter from '../usercenter/usercenter';
 
 
 function Msg() {
@@ -62,7 +62,7 @@ class Dashboard extends Component {
                 text: '个人中心',
                 icon: 'user',
                 title: '个人中心',
-                component: User,
+                component: UserCenter,
             }
         ]
         console.log('dashboard loading');
@@ -70,7 +70,7 @@ class Dashboard extends Component {
         const navHeader = navList.find(v => v.path === pathname);
         return (
             <div>
-                <NavBar mode='dark' className="fixed-header">{navHeader && navHeader.title}</NavBar>
+                <NavBar mode='dard' className="fixed-header">{navHeader && navHeader.title}</NavBar>
                     <div className='functional-body'>
                         <Switch>
                             {navList.map(v=>(
