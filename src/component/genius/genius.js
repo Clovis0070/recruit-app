@@ -1,10 +1,4 @@
 import React, {Component} from 'react';
-import {
-    Card,
-    WhiteSpace,
-    WingBlank
-} from 'antd-mobile';
-import axios from 'axios';
 import {connect} from 'react-redux';
 
 import {getUserList} from '../../redux/chatuser.redux';

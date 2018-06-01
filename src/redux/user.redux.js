@@ -1,10 +1,10 @@
 import axios from 'axios';
 import {getRedirectPath} from "../util";
 
-const REGISTER_SUCCESS = 'REGISTER_SUCCESS',
-    LOGIN_SUCCESS = 'LOGIN_SUCCESS',
+const
     LOAD_DATA = 'LOAD_DATA',
-    AUTH_SUCCESS = 'AUTH_SUCCESS';
+    AUTH_SUCCESS = 'AUTH_SUCCESS',
+    LOG_OUT = 'LOG_OUT';
 const ERROR_MSG = 'ERROR_MSG';
 
 const initState = {
@@ -34,6 +34,8 @@ export function user(state = initState, action) {
                 msg: action.msg
                 // isAuth: false
             }
+        case LOG_OUT:
+            return {...initState, redirectTo: '/login'}
         default:
             return state;
     }
@@ -85,7 +87,7 @@ export function login({user, pwd}) {
         axios.post('/user/login', {user, pwd})
             .then(res => {
                 if (res.status === 200 && res.data.code === 0) {
-                    // console.log(res.data.userdata);
+                    console.log(res.data.data);
                     dispatch(authSuccess(res.data.data));
                 } else {
                     dispatch(errorMsg(res.data.msg));
@@ -109,4 +111,9 @@ export function saveInfo(data) {
                 }
             })
     }
+}
+
+export function logoutSubmit() {
+    console.log('redux logout');
+    return {type: LOG_OUT}
 }

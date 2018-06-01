@@ -25,11 +25,6 @@ function Msg() {
 )
 class Dashboard extends Component {
 
-    constructor(props) {
-        super(props);
-    }
-
-
     render() {
         let {pathname} = this.props.location;
         const user = this.props.user;

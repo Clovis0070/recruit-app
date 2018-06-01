@@ -67,8 +67,8 @@ Router.post('/login', function (req, res) {
             // console.log(doc);
             if (md5Pwd(pwd) === doc.pwd) {
                 res.cookie('userid', doc._id);      // 向客户端发送cookie，把登陆信息放到 cookie 中，根据数据库自动添加的 _id 俩索引这个数据是最好的做法。
-                delete doc.pwd;
-                delete doc._v;
+                doc.pwd = '0';
+                console.log(doc);
                 return res.json({code: 0, data: doc});
             }
             else {
