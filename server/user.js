@@ -41,7 +41,7 @@ Router.get('/list', function (req, res) {
 
 Router.post('/register', function (req, res) {
     console.log("收到注册请求");
-    console.log(req.body);
+    // console.log(req.body);
     const {user, pwd, type} = req.body;
     User.findOne({user: user}, _filter, function (err, doc) {     // 用 findOne 查找用户是否已经存在
         if (doc) {                                          // 用户存在，那么doc就不为空

@@ -5,12 +5,19 @@ import {
     WingBlank,
     WhiteSpace
 } from "antd-mobile";
+import {withRouter} from 'react-router-dom'
 
 // 用于展示可选联系人的组件，展示联系人的头像、职位、简介等信息
 // 注意，使用此组件，务必定义 userlist 属性，将联系人的数据（为json数组）放入userlist
+@withRouter
 class Usercard extends Component {
 
     static propTypes = {userlist: PropTypes.array.isRequired}    // 类型检查，this.props 里必须有 userlist
+
+    handleClick = (v) => {
+        this.props.history.push(`/chat/${v.user}`);
+    }
+
 
     render() {
         const Header = Card.Header,
@@ -21,7 +28,7 @@ class Usercard extends Component {
                 {this.props.userlist.map(v => (
                     v.avatar
                         ? (<div key={v._id}>
-                            <Card>
+                            <Card onClick={() => this.handleClick(v)}>
                                 <Header title={v.user} thumb={require(`../img/${v.avatar}.png`)}
                                         extra={<span>{v.title}</span>}>
                                 </Header>

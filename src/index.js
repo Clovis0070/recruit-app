@@ -20,6 +20,7 @@ import AuthRoute from './component/authRoute/authRoute'
 import BossInfo from './pages/bossInfo/bossInfo';
 import GeniusInfo from './pages/geniusInfo/geniusInfo';
 import Dashboard from './component/dashboard/dashboard';
+import Chat from './pages/chat/chat';
 
 
 // 建立store
@@ -38,8 +39,9 @@ ReactDOM.render(
                     <Route path='/geniusinfo' component={GeniusInfo}></Route>
                     <Route path='/bossinfo' component={BossInfo}></Route>
                     <Route path='/login' component={Login}>登陆页</Route>
-                    {/*<Route path='/' exact component={Login}>登陆页</Route>*/}
+                    <Route path='/' exact component={Login}>登陆页</Route>
                     <Route path='/register' component={Register}>注册页</Route>
+                    <Route path="/chat/:user" component={Chat}></Route>
                     <Route component={Dashboard}></Route>                           // 登陆成功之后进入dashboard，有dashboard管理接下来的跳转。
                 </Switch>
             </div>
